@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Calculus Climb</title>
+    <style>
+        button {
+            padding: 10px 20px;
+            background-color: #2e8b57;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }   
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #2e8b57;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #2e8b57;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        a:hover {
+            background-color: #3cb371;
+        }
+    </style>
+</head>
+<body>
+    <!DOCTYPE html>
+<html>
+<body>
+    <!--2. The Marks Page (Hidden by default)-->
+        <div id="results-page" class="hidden">
+            <h2>Your Results</h2>
+            <p>You have successfully submitted your answers.</p>
+            <div class="score-text" id="score-display"></div>
+            <a href="page2.html">Try Again</a>
+            <button id="next-level-btn" style="display:none;"
+            onclick="window.location.href='page4.html'">
+            Go to Level 2
+            </button>
+        </div>
+        </div>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+
+const score = Number(params.get("score")) || 0;
+const total = Number(params.get("total")) || 10;
+
+document.getElementById("score-display").textContent =
+`${score} / ${total}`;
+
+if (score === 10) {
+    document.getElementById("next-level-btn").style.display = "inline-block";
+}
+    document.getElementById("quiz-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const formData = new FormData(this);
+    let score = 0;
+
+    for (let question in correctAnswers) {
+        if (formData.get(question) === correctAnswers[question]) {
+            score++;
+        }
+    }
+
+    window.location.href = `page3.html?score=${score}&total=10`;
+});
+
+    </script>
+</body>
+</html>
